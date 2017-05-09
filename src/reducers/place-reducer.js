@@ -1,9 +1,14 @@
 import * as types from '../actions/action-types';
 
-export default (state = [], action) => {
+const initialState = [];
+
+export default (state = initialState, action) => {
 	switch (action.type) {
 		case types.ADD_PLACE:
-			return [...state, Object.assign({}, action.place)];
+			return [
+				...state,
+				Object.assign({}, action.place)
+			];
 		default:
 			return state;
 	}

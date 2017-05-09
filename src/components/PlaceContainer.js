@@ -1,6 +1,6 @@
-import React, {PropTypes, Component} from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import React, { PropTypes, Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import * as placeActions from '../actions/place-actions';
 import PlaceList from './PlaceList';
 import PlaceInput from './PlaceInput';
@@ -31,16 +31,12 @@ PlaceContainer.propTypes = {
 	actions: PropTypes.object.isRequired
 };
 
-function mapStateToProps(state, props) {
-	return {
-		places: state.place
-	};
-}
+const mapStateToProps = state => ({
+	places: state.places
+});
 
-function mapDispatchToProps(dispatch) {
-	return {
-		actions: bindActionCreators(placeActions, dispatch)
-	};
-}
+const mapDispatchToProps = dispatch => ({
+	actions: bindActionCreators(placeActions, dispatch)
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaceContainer);
