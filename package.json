@@ -2,7 +2,6 @@
   "name": "metal-jsx-webpack-boilerplate",
   "version": "1.0.0",
   "description": "Boilerplate for metal.js using jsx and webpack.",
-  "license": "MIT",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
