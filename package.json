@@ -11,6 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "immutable": "^3.8.1",
     "metal-jsx": "^2.13.2",
     "metal-router": "^3.6.3"
   },
