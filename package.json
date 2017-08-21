@@ -1,7 +1,7 @@
 {
-  "name": "metal-jsx-webpack-boilerplate",
+  "name": "taste",
   "version": "1.0.0",
-  "description": "Boilerplate for metal.js using jsx and webpack.",
+  "description": "Discover new places to taste.",
   "main": "index.js",
   "scripts": {
     "build": "webpack",
