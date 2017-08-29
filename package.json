@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --open",
+    "start-dev": "webpack-dev-server --open",
+    "start": "webpack -p",
     "watch": "webapack --watch",
     "test": "jest --coverage"
   },
