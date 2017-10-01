@@ -7,11 +7,13 @@
     "build": "webpack",
     "start-dev": "webpack-dev-server --open",
     "start": "webpack -p",
+    "poststart": "node index.js",
     "watch": "webapack --watch",
     "test": "jest --coverage",
     "format": "eslint src"
   },
   "dependencies": {
+    "express": "^4.16.1",
     "immutable": "^3.8.1",
     "metal-jsx": "^2.13.2",
     "metal-router": "^3.6.3"
