@@ -8,7 +8,7 @@
     "start-dev": "webpack-dev-server --open",
     "start": "webpack -p",
     "poststart": "node index.js",
-    "watch": "webapack --watch",
+    "watch": "webpack --watch",
     "test": "jest --coverage",
     "format": "eslint src"
   },
