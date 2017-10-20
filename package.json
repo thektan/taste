@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start-dev": "webpack-dev-server --open",
+    "start-dev": "NODE_ENV=development webpack -p",
     "start": "webpack -p",
     "poststart": "node index.js",
-    "watch": "webpack --watch",
+    "poststart-dev": "node index.js",
+    "watch": "NODE_ENV=development webpack --watch",
     "test": "jest --coverage",
     "format": "eslint src"
   },
