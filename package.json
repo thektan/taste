@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start-dev": "webpack-dev-server --open",
+    "start-dev": "NODE_ENV=development webpack -p",
     "start": "webpack -p",
     "poststart": "node index.js",
-    "watch": "webpack --watch",
+    "poststart-dev": "node index.js",
+    "watch": "NODE_ENV=development webpack --watch",
     "test": "jest --coverage",
     "format": "eslint src"
   },
@@ -32,8 +33,7 @@
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
-    "webpack": "^3.5.4",
-    "webpack-dev-server": "^2.7.1"
+    "webpack": "^3.5.4"
   },
   "jest": {
     "moduleNameMapper": {

@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+	devtool: process.env.NODE_ENV === 'development' ? 'inline-source-map' : false,
 	entry: './src/components/App.js',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
