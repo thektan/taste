@@ -5,6 +5,7 @@ import Navbar from './Navbar';
 import Home from '../pages/Home';
 import About from '../pages/About';
 import Login from '../pages/Login';
+import SignUp from '../pages/SignUp';
 
 import '../css/App.scss';
 
@@ -21,6 +22,7 @@ class App extends JSXComponent {
 				<Router component={Home} path="/" />
 				<Router component={About} path="/about" />
 				<Router component={Login} path="/login" />
+				<Router component={SignUp} path="/signup" />
 			</div>
 		);
 	}
