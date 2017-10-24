@@ -1,5 +1,8 @@
 const AUTH = WeDeploy.auth('auth-taste.wedeploy.io');
 
+// Data of the user signed in.
+export const currentUser = AUTH.currentUser;
+
 /**
  * Creates a new account and signs them in on success.
  */

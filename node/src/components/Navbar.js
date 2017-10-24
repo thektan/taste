@@ -12,10 +12,13 @@ class Navbar extends JSXComponent {
 					<a href="/about">About</a>
 				</li>
 				<li>
-					<a onClick={Auth.signOut}>Sign Out</a>
-				</li>
-				<li>
-					<span class="username"></span>
+					{Auth.currentUser ?
+						<span>
+							{Auth.currentUser.name}
+							<button onClick={Auth.signOut}>Sign Out</button>
+						</span>
+						: <a href="/login">Sign In</a>
+					}
 				</li>
 			</ul>
 		);
