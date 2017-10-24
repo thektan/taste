@@ -31,12 +31,12 @@ class Login extends JSXComponent {
 				<h1>{'Login'}</h1>
 
 				<form name="user" class="container" onSubmit={this.signIn}>
-					<h1>{'Sign In'}</h1>
 					<input name="email" type="email" placeholder="Email" required />
 					<input name="password" type="password" placeholder="Password" required />
-					<button type="submit">{'Submit'}</button>
-					<a href="/signup">{'Create an account'}</a>
+					<button type="submit">{'Login'}</button>
 				</form>
+
+				<a href="/signup">{'Create an account'}</a>
 			</div>
 		);
 	}

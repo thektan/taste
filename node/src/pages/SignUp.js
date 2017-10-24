@@ -15,9 +15,6 @@ class SignUp extends JSXComponent {
 	submitForm(event) {
 		event.preventDefault();
 
-		console.log('hello', this._auth);
-		console.log('hello', this._auth.createUser);
-
 		this._auth.createUser({
 			email: user.email.value,
 			name: user.name.value,
@@ -46,20 +43,19 @@ class SignUp extends JSXComponent {
 			});
 	}
 
-
 	render() {
 		return (
 			<div>
-				<h1>{'Login'}</h1>
+				<h1>{'Sign Up'}</h1>
 
 				<form name="user" class="container" onSubmit={this.submitForm}>
-					<h1>{'Sign Up'}</h1>
 					<input name="name" type="text" placeholder="Name" required />
 					<input name="email" type="email" placeholder="Email" required />
 					<input name="password" type="password" placeholder="Password" required />
-					<button type="submit">{'Submit'}</button>
-					<a href="/login">{'Back to login'}</a>
+					<button type="submit">{'Create Account'}</button>
 				</form>
+
+				<a href="/login">{'Back to login'}</a>
 			</div>
 		);
 	}
