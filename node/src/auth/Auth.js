@@ -21,9 +21,7 @@ export const createAccount = (event) => {
 
 			signIn(event);
 		})
-		.catch(() => {
-			alert('Sign-up failed. Try another email.');
-		});
+		.catch(() => alert('Sign-up failed. Try another email.'));
 
 	return false;
 }
@@ -40,9 +38,7 @@ export const signIn = (event) => {
 		.then(() => {
 			document.location.href = '/';
 		})
-		.catch(() => {
-			alert('Sign-in failed. Try another email/password.');
-		});
+		.catch(() => alert('Sign-in failed. Try another email/password.'));
 
 	return false;
 }
@@ -52,7 +48,5 @@ export const signIn = (event) => {
  */
 export const signOut = () => {
 	AUTH.signOut()
-		.then(() => {
-			location.href = '/';
-		});
+		.then(() => location.href = '/');
 }
