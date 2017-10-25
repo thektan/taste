@@ -30,4 +30,4 @@ Open a new terminal and run the following script to recompile on any file change
 yarn watch
 ```
 
-Visit `localhost:8080` to see the app in action.
+Visit `localhost:8000` to see the app in action.
