@@ -1,68 +1,27 @@
 import JSXComponent from 'metal-jsx';
 
+import {createAccount} from '../auth/Auth';
+
 class SignUp extends JSXComponent {
-	created() {
-		this._auth = WeDeploy.auth('auth-taste.wedeploy.io');
+  render() {
+    return (
+      <div>
+        <h1>{'Sign Up'}</h1>
 
-		if (this._auth.currentUser) {
-			document.querySelector('.username').innerHTML = this._auth.currentUser.name;
-		}
+        <form name="user" class="container" onSubmit={createAccount}>
+          <input name="name" type="text" placeholder="Name" required />
 
-		this.submitForm = this.submitForm.bind(this);
-		this.signIn = this.signIn.bind(this);
-	}
+          <input name="email" type="email" placeholder="Email" required />
 
-	submitForm(event) {
-		event.preventDefault();
+          <input name="password" type="password" placeholder="Password" required />
 
-		console.log('hello', this._auth);
-		console.log('hello', this._auth.createUser);
+          <button type="submit">{'Create Account'}</button>
+        </form>
 
-		this._auth.createUser({
-			email: user.email.value,
-			name: user.name.value,
-			password: user.password.value
-		})
-			.then(function () {
-				alert('Account successfully created!');
-				this.signIn();
-				user.reset();
-			})
-			.catch(function () {
-				alert('Sign-up failed. Try another email.');
-				user.reset();
-			});
-
-		return false;
-	}
-
-	signIn() {
-		this._auth.signInWithEmailAndPassword(user.email.value, user.password.value)
-			.then(function () {
-				document.location.href = '/';
-			})
-			.catch(function () {
-				alert('Sign-in failed. Try another email/password.');
-			});
-	}
-
-
-	render() {
-		return (
-			<div>
-				<h1>{'Login'}</h1>
-
-				<form name="user" class="container" onSubmit={this.submitForm}>
-					<h1>{'Sign Up'}</h1>
-					<input name="name" type="text" placeholder="Name" required />
-					<input name="email" type="email" placeholder="Email" required />
-					<input name="password" type="password" placeholder="Password" required />
-					<button type="submit">{'Submit'}</button>
-					<a href="/login">{'Back to login'}</a>
-				</form>
-			</div>
-		);
-	}
+        <a href="/login">{'Back to login'}</a>
+      </div>
+    );
+  }
 }
 
 export default SignUp;

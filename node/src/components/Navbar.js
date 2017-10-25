@@ -1,37 +1,34 @@
 import JSXComponent from 'metal-jsx';
+import {currentUser, signOut} from '../auth/Auth';
 
 class Navbar extends JSXComponent {
-	created() {
-		this._auth = WeDeploy.auth('auth-taste.wedeploy.io');
+  render() {
+    return (
+      <ul role="navigation">
+        <li>
+          <a href="/">Home</a>
+        </li>
 
-		this.signOut = this.signOut.bind(this);
-	}
+        <li>
+          <a href="/about">About</a>
+        </li>
 
-	signOut() {
-		this._auth.signOut()
-			.then(() => {
-				location.href = '/';
-			});
-	}
+        <li>
+          {currentUser &&
+            <span>
+              {currentUser.name}
 
-	render() {
-		return (
-			<ul role="navigation">
-				<li>
-					<a href="/">Home</a>
-				</li>
-				<li>
-					<a href="/about">About</a>
-				</li>
-				<li>
-					<a onClick={this.signOut}>Sign Out</a>
-				</li>
-				<li>
-					<span class="username"></span>
-				</li>
-			</ul>
-		);
-	}
+              <button onClick={signOut}>Sign Out</button>
+            </span>
+          }
+
+          {!currentUser &&
+            <a href="/login">Sign In</a>
+          }
+        </li>
+      </ul>
+    );
+  }
 }
 
 export default Navbar;
