@@ -1,5 +1,5 @@
 import JSXComponent from 'metal-jsx';
-import {currentUser, signOut} from '../auth/Auth';
+import { currentUser, signOut } from '../auth/Auth';
 
 class Navbar extends JSXComponent {
   render() {

@@ -1,5 +1,5 @@
 import JSXComponent from 'metal-jsx';
-import {signIn} from '../auth/Auth';
+import { signIn } from '../auth/Auth';
 
 class Login extends JSXComponent {
   render() {
