@@ -31,3 +31,7 @@ yarn watch
 ```
 
 Visit `localhost:8000` to see the app in action.
+
+### Other Notes
+
+This repo follows eslint [airbnb-base](https://www.npmjs.com/package/eslint-config-airbnb-base).

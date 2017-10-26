@@ -31,4 +31,4 @@ class App extends JSXComponent {
   }
 }
 
-new App({element: '#root'});
+new App({ element: '#root' }); // eslint-disable-line no-new
