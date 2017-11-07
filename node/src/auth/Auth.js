@@ -6,7 +6,7 @@ export const { currentUser } = AUTH;
 /**
  * Signs in a user and redirects to the home page.
  */
-export const signIn = (event) => {
+export const signIn = event => {
   event.preventDefault();
 
   const form = event.target;
@@ -24,14 +24,13 @@ export const signIn = (event) => {
  * Signs a user out and redirects to the home page.
  */
 export const signOut = () => {
-  AUTH.signOut()
-    .then(() => location.href = '/'); // eslint-disable-line
+  AUTH.signOut().then(() => (location.href = '/')); // eslint-disable-line
 };
 
 /**
  * Creates a new account and signs them in on success.
  */
-export const createAccount = (event) => {
+export const createAccount = event => {
   event.preventDefault();
 
   const form = event.target;

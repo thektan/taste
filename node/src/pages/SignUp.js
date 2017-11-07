@@ -13,7 +13,12 @@ class SignUp extends JSXComponent {
 
           <input name="email" type="email" placeholder="Email" required />
 
-          <input name="password" type="password" placeholder="Password" required />
+          <input
+            name="password"
+            type="password"
+            placeholder="Password"
+            required
+          />
 
           <button type="submit">{'Create Account'}</button>
         </form>
