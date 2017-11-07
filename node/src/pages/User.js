@@ -4,7 +4,7 @@ class User extends JSXComponent {
   render() {
     return (
       <div>
-        <h1>User</h1>
+        <h1>User {this.props.router.params.id}</h1>
       </div>
     );
   }
