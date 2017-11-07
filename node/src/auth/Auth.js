@@ -12,8 +12,8 @@ export const signIn = event => {
   const form = event.target;
 
   AUTH.signInWithEmailAndPassword(form.email.value, form.password.value)
-    .then(() => {
-      document.location.href = '/';
+    .then(({ id }) => {
+      document.location.href = '/user/' + id;
     })
     .catch(() => alert('Sign-in failed. Try another email/password.'));
 
