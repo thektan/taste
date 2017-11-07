@@ -1,7 +1,7 @@
 import JSXComponent from 'metal-jsx';
 import Router from 'metal-router';
 
-import About from '../pages/About';
+import User from '../pages/User';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
 import Navbar from './Navbar';
@@ -19,7 +19,7 @@ class App extends JSXComponent {
       <div id="app">
         <Navbar />
 
-        <Router component={About} path="/about" />
+        <Router component={User} path="/user/:userId" />
 
         <Router component={Login} path="/login" />
 

@@ -10,7 +10,7 @@ class Navbar extends JSXComponent {
         </li>
 
         <li>
-          <a href="/about">About</a>
+          <a href="/user">User</a>
         </li>
 
         <li>

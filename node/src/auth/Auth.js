@@ -1,4 +1,4 @@
-const AUTH = WeDeploy.auth('auth-taste.wedeploy.io'); // eslint-disable-line no-undef
+export const AUTH = WeDeploy.auth('auth-taste.wedeploy.io'); // eslint-disable-line no-undef
 
 // Data of the user signed in.
 export const { currentUser } = AUTH;
@@ -12,8 +12,8 @@ export const signIn = event => {
   const form = event.target;
 
   AUTH.signInWithEmailAndPassword(form.email.value, form.password.value)
-    .then(() => {
-      document.location.href = '/';
+    .then(({ id }) => {
+      document.location.href = `/user/${id}`;
     })
     .catch(() => alert('Sign-in failed. Try another email/password.'));
 
