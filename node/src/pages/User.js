@@ -1,13 +1,13 @@
 import JSXComponent from 'metal-jsx';
 
-class About extends JSXComponent {
+class User extends JSXComponent {
   render() {
     return (
       <div>
-        <h1>About</h1>
+        <h1>User</h1>
       </div>
     );
   }
 }
 
-export default About;
+export default User;
