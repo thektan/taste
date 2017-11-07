@@ -13,7 +13,7 @@ export const signIn = event => {
 
   AUTH.signInWithEmailAndPassword(form.email.value, form.password.value)
     .then(({ id }) => {
-      document.location.href = '/user/' + id;
+      document.location.href = `/user/${id}`;
     })
     .catch(() => alert('Sign-in failed. Try another email/password.'));
 
