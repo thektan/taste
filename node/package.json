@@ -11,7 +11,12 @@
     "poststart-dev": "node index.js",
     "watch": "NODE_ENV=development webpack --watch",
     "test": "jest --coverage",
-    "format": "eslint src"
+    "format": "npm run format:prettier && npm run format:eslint && yarn run lint",
+    "format:eslint": "eslint --fix \"src/**/*.js\"",
+    "format:prettier": "prettier --write \"src/**/*.js\"",
+    "lint": "yarn run lint:eslint && yarn run lint:prettier",
+    "lint:eslint": "eslint \"src/**/*.js\"",
+    "lint:prettier": "prettier --list-different \"src/**/*.js\""
   },
   "dependencies": {
     "express": "^4.16.1",
@@ -29,10 +34,11 @@
     "babel-preset-metal-jsx": "^0.1.1",
     "css-loader": "^0.28.4",
     "eslint": "^4.5.0",
-    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-config-prettier": "^2.7.0",
     "eslint-plugin-import": "^2.8.0",
     "jest": "^20.0.4",
     "node-sass": "^4.5.3",
+    "prettier": "^1.7.4",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "webpack": "^3.5.4"
