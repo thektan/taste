@@ -19,7 +19,7 @@ class App extends JSXComponent {
       <div id="app">
         <Navbar />
 
-        <Router component={User} path="/user/:id" />
+        <Router component={User} path="/user/:userId" />
 
         <Router component={Login} path="/login" />
 

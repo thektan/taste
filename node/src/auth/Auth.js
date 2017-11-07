@@ -1,4 +1,4 @@
-const AUTH = WeDeploy.auth('auth-taste.wedeploy.io'); // eslint-disable-line no-undef
+export const AUTH = WeDeploy.auth('auth-taste.wedeploy.io'); // eslint-disable-line no-undef
 
 // Data of the user signed in.
 export const { currentUser } = AUTH;
