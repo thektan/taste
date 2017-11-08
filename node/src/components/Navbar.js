@@ -14,15 +14,19 @@ class Navbar extends JSXComponent {
         </li>
 
         <li>
-          {currentUser && (
-            <span>
-              {currentUser.name}
+          {
+            do {
+              if (currentUser) {
+                <span>
+                  {currentUser.name}
 
-              <button onClick={signOut}>Sign Out</button>
-            </span>
-          )}
-
-          {!currentUser && <a href="/login">Sign In</a>}
+                  <button onClick={signOut}>Sign Out</button>
+                </span>;
+              } else {
+                <a href="/login">Sign In</a>;
+              }
+            }
+          }
         </li>
       </ul>
     );

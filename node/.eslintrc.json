@@ -7,10 +7,12 @@
   },
   "parserOptions": {
     "sourceType": "module",
+    "allowImportExportEverywhere": true,
     "ecmaFeatures": {
       "jsx": true
     }
   },
+  "parser": "babel-eslint",
   "rules": {
     "class-methods-use-this": ["error", {
         "exceptMethods": [
