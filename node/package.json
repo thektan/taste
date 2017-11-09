@@ -19,6 +19,7 @@
     "lint:prettier": "prettier --list-different \"src/**/*.js\""
   },
   "dependencies": {
+    "bootstrap": "4.0.0-beta.2",
     "express": "^4.16.1",
     "immutable": "^3.8.1",
     "metal-component": "^2.13.2",
