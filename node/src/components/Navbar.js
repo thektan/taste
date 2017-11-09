@@ -4,31 +4,43 @@ import { currentUser, signOut } from '../auth/Auth';
 class Navbar extends JSXComponent {
   render() {
     return (
-      <ul role="navigation">
-        <li>
-          <a href="/">Home</a>
-        </li>
+      <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <a class="navbar-brand" href="/">
+          Taste
+        </a>
 
-        <li>
-          <a href="/user">User</a>
-        </li>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon" />
+        </button>
 
-        <li>
-          {
-            do {
-              if (currentUser) {
-                <span>
-                  {currentUser.name}
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              {
+                do {
+                  if (currentUser) {
+                    <span>
+                      {currentUser.name}
 
-                  <button onClick={signOut}>Sign Out</button>
-                </span>;
-              } else {
-                <a href="/login">Sign In</a>;
+                      <a onClick={signOut}>Sign Out</a>
+                    </span>;
+                  } else {
+                    <a href="/login">Sign In</a>;
+                  }
+                }
               }
-            }
-          }
-        </li>
-      </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
     );
   }
 }

@@ -8,16 +8,34 @@ class Login extends JSXComponent {
         <h1>{'Login'}</h1>
 
         <form name="user" class="container" onSubmit={signIn}>
-          <input name="email" type="email" placeholder="Email" required />
+          <div class="form-group">
+            <label for="loginEmail">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="loginEmail"
+              aria-describedby="emailHelp"
+              name="email"
+              placeholder="Enter email"
+              required
+            />
+          </div>
 
-          <input
-            name="password"
-            type="password"
-            placeholder="Password"
-            required
-          />
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="loginPassword"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </div>
 
-          <button type="submit">{'Login'}</button>
+          <button class="btn btn-primary" type="submit">
+            {'Login'}
+          </button>
         </form>
 
         <a href="/signup">{'Create an account'}</a>
