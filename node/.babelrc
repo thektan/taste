@@ -1,4 +1,0 @@
-{
-  "plugins": ["transform-do-expressions"],
-	"presets": ["es2015", "metal-jsx"]
-}

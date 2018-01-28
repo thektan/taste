@@ -1,6 +1,6 @@
-import JSXComponent from 'metal-jsx';
+import React, { Component } from 'react';
 
-class Home extends JSXComponent {
+class Home extends Component {
   render() {
     return (
       <div>
