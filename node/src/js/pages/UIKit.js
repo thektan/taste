@@ -5,9 +5,9 @@ import * as Kit from '../ui-kit/*';
 const req = require.context('.', false, /\w+Kit.js$/);
 
 const kits = req.keys().map((kit, id) => ({
-	component: req(kit, id).default,
-	id,
-	name: kit.replace('./', '').replace('Kit.js', '')
+  component: req(kit, id).default,
+  id,
+  name: kit.replace('./', '').replace('Kit.js', '')
 }));
 
 class UIKit extends Component {
@@ -16,7 +16,7 @@ class UIKit extends Component {
       <div>
         <h1>UI Kit</h1>
       </div>
-    )
+    );
   }
 }
 
