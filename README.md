@@ -1,33 +1,17 @@
 # Taste
 
-*Under development*
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+_Under development_
 
 [Here's what's planned for 1.0](https://github.com/thektan/taste/milestone/2)
 
 ## Development
 
-Go to `node` directory.
+We are using [create-react-app](https://github.com/facebook/create-react-app).
 
-```bash
-cd node
+To start the app, go into the `node` directory and run:
+
 ```
-
-Install dependencies.
-
-```bash
-yarn
+yarn start
 ```
-
-Start the express server.
-
-```bash
-yarn start-dev
-```
-
-Open a new terminal and run the following script to recompile on any file changes.
-
-```bash
-yarn watch
-```
-
-Visit `localhost:8000` to see the app in action.
