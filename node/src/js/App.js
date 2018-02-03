@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {
   Navbar,
-  Navbar,
   NavbarBrand,
   Nav,
   NavItem,
@@ -45,20 +44,15 @@ class App extends Component {
 
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+                <NavLink href="/user">Sign In</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="/user">Github</NavLink>
-              </NavItem>
+
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
-                  Options
+                  User
                 </DropdownToggle>
                 <DropdownMenu>
-                  <DropdownItem>Option 1</DropdownItem>
-                  <DropdownItem>Option 2</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>Reset</DropdownItem>
+                  <DropdownItem>Sign out</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </Nav>
