@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import { signUp } from '../utils/auth';
@@ -40,10 +41,12 @@ class SignUp extends Component {
               <Label for="name">Name</Label>
               <Input type="name" name="name" id="name" placeholder="Name" />
             </FormGroup>
+
             <FormGroup>
               <Label for="email">Email</Label>
               <Input type="email" name="email" id="email" placeholder="Email" />
             </FormGroup>
+
             <FormGroup>
               <Label for="password">Password</Label>
               <Input
@@ -53,12 +56,15 @@ class SignUp extends Component {
                 placeholder="Password"
               />
             </FormGroup>
+
             <Button color="primary" block>
               {'Create account'}
             </Button>
 
             <small className="signin-signup text-muted">
-              {'Already have an account? '} <a href="/signup">Sign in here</a>
+              {'Already have an account? '}
+
+              <Link to="/signin">Sign in here</Link>
             </small>
           </Form>
         </div>

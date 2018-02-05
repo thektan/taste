@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import { signIn } from '../utils/auth';
@@ -37,7 +38,9 @@ class SignIn extends Component {
           </Form>
 
           <small className="signin-signup text-muted">
-            {"Don't have an account? "} <a href="/signup">Create one here</a>
+            {"Don't have an account? "}
+
+            <Link to="/signup">Create one here</Link>
           </small>
         </div>
       </Container>
