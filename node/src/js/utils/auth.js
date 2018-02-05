@@ -50,6 +50,4 @@ export function signUp(event) {
     name: form.name.value,
     password: form.password.value
   });
-
-  return false;
 }
