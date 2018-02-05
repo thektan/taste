@@ -38,23 +38,18 @@ export function signOut() {
 
 /**
  * Creates a new account and signs them in on success.
+ * @return {Promise}
  */
-export function createAccount(event) {
+export function signUp(event) {
   event.preventDefault();
 
   const form = event.target;
 
-  AUTH.createUser({
+  return AUTH.createUser({
     email: form.email.value,
     name: form.name.value,
     password: form.password.value
-  })
-    .then(() => {
-      alert('Account successfully created!');
-
-      signIn(event);
-    })
-    .catch(() => alert('Sign-up failed. Try another email.'));
+  });
 
   return false;
 }

@@ -1,14 +1,45 @@
 import React, { Component } from 'react';
 import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
 
+import { signUp } from '../utils/auth';
+
 class SignUp extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSignUp = this.handleSignUp.bind(this);
+  }
+
+  handleSignUp(event) {
+    signUp(event)
+      .then(() => {
+        this.props.history.push('/signin');
+      })
+      .catch(err => {
+        alert(
+          'An error has occurred and we were unable to create your account.'
+        );
+
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <Container>
-        <div className="login-container">
-          <h1>{'Create your new account'}</h1>
+        <div className="signin-container">
+          <h1>
+            {'Create your new account '}
+            <span aria-label="wave" role="img">
+              ✨
+            </span>
+          </h1>
 
-          <Form>
+          <Form onSubmit={this.handleSignUp}>
+            <FormGroup>
+              <Label for="name">Name</Label>
+              <Input type="name" name="name" id="name" placeholder="Name" />
+            </FormGroup>
             <FormGroup>
               <Label for="email">Email</Label>
               <Input type="email" name="email" id="email" placeholder="Email" />
@@ -23,11 +54,11 @@ class SignUp extends Component {
               />
             </FormGroup>
             <Button color="primary" block>
-              Sign In
+              {'Create account'}
             </Button>
 
-            <small className="login-signup text-muted">
-              {"Don't have an account? "} <a href="/signup">Create one here</a>
+            <small className="signin-signup text-muted">
+              {'Already have an account? '} <a href="/signup">Sign in here</a>
             </small>
           </Form>
         </div>
