@@ -8,10 +8,22 @@ _Under development_
 
 ## Development
 
+### Environment
+
 We are using [create-react-app](https://github.com/facebook/create-react-app).
+
+### Deploying
 
 To start the app, go into the `node` directory and run:
 
 ```
 yarn start
 ```
+
+To watch for css changes, open a new terminal and run:
+
+```
+yarn watch-css
+```
+
+Prettier formatting is automatically run on every commit.
