@@ -1,22 +1,32 @@
 import React, { Component } from 'react';
-// import { AUTH } from '../auth/Auth';
+import { Container } from 'reactstrap';
+
+import { AUTH } from '../utils/auth';
 
 class User extends Component {
-  // created() {
-  //   AUTH.getUser(this.props.router.params.userId)
-  //     .then(({ name }) => {
-  //       this.state.name = name;
-  //     })
-  //     .catch(() => {
-  //       this.state.name = 'User could not be found.';
-  //     });
-  // }
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      name: ''
+    };
+  }
+
+  componentDidMount() {
+    AUTH.getUser(this.props.match.params.id)
+      .then(({ name }) => {
+        this.setState({ name });
+      })
+      .catch(() => {
+        this.setState({ name: 'User could be found.' });
+      });
+  }
 
   render() {
     return (
-      <div>
-        <h1>User Name</h1>
-      </div>
+      <Container>
+        <h1>Name: {this.state.name}</h1>
+      </Container>
     );
   }
 }

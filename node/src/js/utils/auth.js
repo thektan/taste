@@ -1,3 +1,9 @@
+/**
+ * Functions to interact with WeDeploy Auth to manage users.
+ */
+
+import WeDeploy from 'wedeploy';
+
 export const AUTH = WeDeploy.auth('auth-taste.wedeploy.io');
 
 // Data of the user signed in.
@@ -5,6 +11,7 @@ export const { currentUser } = AUTH;
 
 /**
  * Signs in a user and redirects to the home page.
+ * https://wedeploy.com/docs/auth/sign-in-with-password/
  */
 export function signIn(event) {
   event.preventDefault();
@@ -21,10 +28,12 @@ export function signIn(event) {
 }
 
 /**
- * Signs a user out and redirects to the home page.
+ * Signs a user out.
+ * https://wedeploy.com/docs/auth/manage-users/
+ * @return {Promise}
  */
 export function signOut() {
-  AUTH.signOut().then(() => (location.href = '/'));
+  return AUTH.signOut();
 }
 
 /**
