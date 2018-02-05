@@ -1,16 +1,12 @@
 import React, { Component } from 'react';
-import { UncontrolledAlert } from 'reactstrap';
+import { Container } from 'reactstrap';
 
 class Home extends Component {
   render() {
     return (
-      <div>
+      <Container>
         <h1>Home</h1>
-
-        <UncontrolledAlert color="info">
-          This is a test for reactstrap.
-        </UncontrolledAlert>
-      </div>
+      </Container>
     );
   }
 }
