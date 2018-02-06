@@ -5,6 +5,24 @@ import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
 import { signIn } from '../utils/auth';
 
 class SignIn extends Component {
+  constructor(props) {
+    super(props);
+
+    this.handleSignIn = this.handleSignIn.bind(this);
+  }
+
+  handleSignIn(event) {
+    signIn(event)
+      .then(({ id }) => {
+        window.location = `/user/${id}`; // Not using react-router here so the navbar will be refreshed as well.
+      })
+      .catch(err => {
+        alert('Sign in failed. Your email or password may be incorrect.');
+
+        console.log(err);
+      });
+  }
+
   render() {
     return (
       <Container>
@@ -16,7 +34,7 @@ class SignIn extends Component {
             </span>
           </h1>
 
-          <Form onSubmit={signIn}>
+          <Form onSubmit={this.handleSignIn}>
             <FormGroup>
               <Label for="email">Email</Label>
               <Input type="email" name="email" id="email" placeholder="Email" />

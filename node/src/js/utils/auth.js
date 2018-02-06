@@ -1,5 +1,6 @@
 /**
  * Functions to interact with WeDeploy Auth to manage users.
+ * https://wedeploy.com/docs/auth/manage-users/
  */
 
 import WeDeploy from 'wedeploy';
@@ -18,13 +19,7 @@ export function signIn(event) {
 
   const form = event.target;
 
-  AUTH.signInWithEmailAndPassword(form.email.value, form.password.value)
-    .then(({ id }) => {
-      document.location.href = `/user/${id}`;
-    })
-    .catch(() => alert('Sign-in failed. Try another email/password.'));
-
-  return false;
+  return AUTH.signInWithEmailAndPassword(form.email.value, form.password.value);
 }
 
 /**
