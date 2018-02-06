@@ -10,9 +10,17 @@ _Under development_
 
 ### Environment
 
-We are using [create-react-app](https://github.com/facebook/create-react-app).
+* Created on [create-react-app](https://github.com/facebook/create-react-app)
+* Formatter: [Prettier](https://prettier.io/)
+* Viewing/testing components: [Storybook](https://storybook.js.org/)
 
 ### Deploying
+
+Install dependencies
+
+```
+yarn
+```
 
 To start the app, go into the `node` directory and run:
 
@@ -27,3 +35,9 @@ yarn watch-css
 ```
 
 Prettier formatting is automatically run on every commit.
+
+### Storybook to view and test components
+
+```
+yarn run storybook
+```
