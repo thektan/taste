@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import {
   Navbar,
@@ -13,13 +12,11 @@ import {
   DropdownItem
 } from 'reactstrap';
 
-import { currentUser, signOut } from '../utils/auth';
+import { signOut } from '../utils/auth';
 
 class NavBar extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { userName: currentUser ? currentUser.name : '' };
 
     this.handleSignOut = this.handleSignOut.bind(this);
   }
@@ -27,9 +24,7 @@ class NavBar extends Component {
   handleSignOut() {
     signOut()
       .then(() => {
-        this.setState({ userName: '' });
-
-        this.props.history.push('/');
+        window.location = '/'; // Just refresh the whole page instead of using react-router.
       })
       .catch(() =>
         alert('An error has occurred and we were unable to sign you out.')
@@ -37,7 +32,7 @@ class NavBar extends Component {
   }
 
   render() {
-    const { userName } = this.state;
+    const { currentUser } = this.props;
 
     return (
       <Navbar color="faded" light expand="md">
@@ -46,7 +41,7 @@ class NavBar extends Component {
         </NavbarBrand>
 
         <Nav className="ml-auto" navbar>
-          {!userName && (
+          {!currentUser && (
             <NavItem>
               <NavLink tag={Link} to="/signin">
                 Sign In
@@ -54,10 +49,10 @@ class NavBar extends Component {
             </NavItem>
           )}
 
-          {userName && (
+          {currentUser && (
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                {userName}
+                {currentUser.name}
               </DropdownToggle>
 
               <DropdownMenu right>
@@ -83,4 +78,4 @@ class NavBar extends Component {
   }
 }
 
-export default withRouter(NavBar);
+export default NavBar;
