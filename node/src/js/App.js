@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { Container } from 'reactstrap';
@@ -22,9 +22,13 @@ class App extends Component {
 
           <Route exact path="/" component={Home} />
 
-          <Route exact path="/signin" component={SignIn} />
+          {!currentUser && (
+            <Fragment>
+              <Route exact path="/signin" component={SignIn} />
 
-          <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/signup" component={SignUp} />
+            </Fragment>
+          )}
 
           <Route exact path="/user/:id" component={User} />
         </Container>
