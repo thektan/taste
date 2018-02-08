@@ -16,11 +16,19 @@ _Under development_
 
 ### Deploying
 
-Install dependencies
+On first deploy, install dependencies
 
 ```
 yarn
 ```
+
+### To start the app, watch for css changes, and start storybook:
+
+```
+yarn start-dev
+```
+
+### To deploy in separate panes
 
 To start the app, go into the `node` directory and run:
 
@@ -36,7 +44,7 @@ yarn watch-css
 
 Prettier formatting is automatically run on every commit.
 
-### Storybook to view and test components
+To start storybook to view and test components:
 
 ```
 yarn run storybook
