@@ -22,6 +22,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "start": "react-scripts start",
+    "start-dev": "concurrently -p \"[{name}]\" -n \"APP,CSS,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"react-scripts start\" \"yarn watch-css\" \"yarn start-storybook -p 9009 -s public\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
@@ -31,13 +32,14 @@
     "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {
-    "husky": "^0.14.3",
-    "lint-staged": "^6.1.0",
-    "prettier": "^1.10.2",
-    "@storybook/react": "^3.3.12",
     "@storybook/addon-actions": "^3.3.12",
     "@storybook/addon-links": "^3.3.12",
     "@storybook/addons": "^3.3.12",
-    "babel-core": "^6.26.0"
+    "@storybook/react": "^3.3.12",
+    "babel-core": "^6.26.0",
+    "concurrently": "^3.5.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2"
   }
 }
