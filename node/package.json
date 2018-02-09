@@ -30,7 +30,7 @@
     "start": "react-scripts start",
     "start-dev": "concurrently -p \"[{name}]\" -n \"APP,CSS,STORYBOOK\" -c \"bgBlue.bold,bgMagenta.bold,bgGreen.bold\" \"react-scripts start\" \"yarn watch-css\" \"yarn start-storybook -p 9009 -s public\"",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom && bundlesize",
     "eject": "react-scripts eject",
     "build-css": "node-sass-chokidar src/css -o src/css",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
