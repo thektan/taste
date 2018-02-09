@@ -22,7 +22,7 @@ On first deploy, install dependencies
 yarn
 ```
 
-### To start the app, watch for css changes, and start storybook:
+### To start the app, watch for css changes, and start storybook
 
 ```
 yarn start-dev
