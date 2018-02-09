@@ -13,11 +13,17 @@
     "reactstrap": "^5.0.0-beta",
     "wedeploy": "^4.2.0"
   },
-  "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --single-quote --write",
-      "git add"
-    ]
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.3.12",
+    "@storybook/addon-links": "^3.3.12",
+    "@storybook/addons": "^3.3.12",
+    "@storybook/react": "^3.3.12",
+    "babel-core": "^6.26.0",
+    "bundlesize": "^0.16.0",
+    "concurrently": "^3.5.1",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2"
   },
   "scripts": {
     "precommit": "lint-staged",
@@ -29,17 +35,23 @@
     "build-css": "node-sass-chokidar src/css -o src/css",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "storybook": "start-storybook -p 9009 -s public",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "bundlesize": "bundlesize"
   },
-  "devDependencies": {
-    "@storybook/addon-actions": "^3.3.12",
-    "@storybook/addon-links": "^3.3.12",
-    "@storybook/addons": "^3.3.12",
-    "@storybook/react": "^3.3.12",
-    "babel-core": "^6.26.0",
-    "concurrently": "^3.5.1",
-    "husky": "^0.14.3",
-    "lint-staged": "^6.1.0",
-    "prettier": "^1.10.2"
-  }
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  },
+  "bundlesize": [
+    {
+      "path": "./build/static/js/main*.js",
+      "maxSize": "1 MB"
+    },
+    {
+      "path": "./build/static/css/main*.css",
+      "maxSize": "200 KB"
+    }
+  ]
 }
