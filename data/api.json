@@ -1,0 +1,6 @@
+[
+  {
+    "path": "/places/*",
+    "data": true
+  }
+]
