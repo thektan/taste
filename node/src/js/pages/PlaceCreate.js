@@ -1,172 +1,216 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
   Button,
   Col,
   Container,
   Form,
+  FormFeedback,
   FormGroup,
   Label,
-  Input
+  Input,
+  Row
 } from 'reactstrap';
-import { Formik } from 'formik';
+import { withFormik, Field } from 'formik';
+import Title from '../components/Title';
+import Yup from 'yup';
+
+const StyledField = ({
+  field: { name, value, onChange, onBlur },
+  form: { touched, errors },
+  ...props
+}) => {
+  return (
+    <Fragment>
+      <Input
+        onBlur={onBlur}
+        onChange={onChange}
+        name={name}
+        valid={touched[name] && errors[name] ? false : undefined}
+        placeholder={props.placeholder}
+        type={props.type || 'text'}
+      />
+
+      {touched[name] &&
+        errors[name] && <FormFeedback>{errors[name]}</FormFeedback>}
+    </Fragment>
+  );
+};
+
+const PlaceCreateFormRenderer = ({
+  values,
+  errors,
+  touched,
+  handleSubmit,
+  handleBlur,
+  handleChange,
+  isSubmitting
+}) => (
+  <Form onSubmit={handleSubmit}>
+    <Row className="form-section">
+      <Col md="3">
+        <h5>Name</h5>
+      </Col>
+
+      <Col md="9">
+        <FormGroup>
+          <Field
+            component={StyledField}
+            name="name"
+            placeholder="Bob's Pizza"
+          />
+        </FormGroup>
+      </Col>
+    </Row>
+
+    <Row className="form-section">
+      <Col md="3">
+        <h5>Location</h5>
+      </Col>
+
+      <Col md="9">
+        <FormGroup>
+          <Label for="address1">Address</Label>
+
+          <Field
+            component={StyledField}
+            name="address1"
+            placeholder="123 Abc St"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Field
+            component={StyledField}
+            name="address2"
+            placeholder="Ste 123"
+          />
+        </FormGroup>
+
+        <FormGroup row>
+          <Col md="6">
+            <Label for="city">City</Label>
+
+            <Field
+              component={StyledField}
+              name="city"
+              placeholder="Los Angeles"
+            />
+          </Col>
+
+          <Col md="3">
+            <Label for="state">State</Label>
+
+            <Field component={StyledField} name="state" placeholder="CA" />
+          </Col>
+
+          <Col md="3">
+            <Label for="zip">ZIP</Label>
+
+            <Field component={StyledField} name="zip" placeholder="12345" />
+          </Col>
+        </FormGroup>
+      </Col>
+    </Row>
+
+    <Row className="form-section">
+      <Col md="3">
+        <h5>Details</h5>
+      </Col>
+
+      <Col md="9">
+        <FormGroup>
+          <Label for="phone">Phone Number</Label>
+
+          <Field
+            component={StyledField}
+            name="phone"
+            placeholder="(123) 123-1234"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label for="website">Website</Label>
+
+          <Field
+            component={StyledField}
+            name="website"
+            placeholder="https://1234.com"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label for="yelp">Yelp Link</Label>
+
+          <Field
+            component={StyledField}
+            name="yelp"
+            placeholder="https://yelp.com/biz/somelink"
+          />
+        </FormGroup>
+
+        <FormGroup>
+          <Label for="tags">Tags</Label>
+
+          <Field
+            component={StyledField}
+            name="tags"
+            placeholder="pizza, burgers, ..."
+          />
+        </FormGroup>
+      </Col>
+    </Row>
+
+    <Row className="form-section">
+      <Col md={{ size: 9, offset: 3 }}>
+        <Button color="primary" disabled={isSubmitting} type="submit">
+          {'Create Place'}
+        </Button>
+      </Col>
+    </Row>
+  </Form>
+);
+
+const VALIDATION_SCHEMA = Yup.object().shape({
+  name: Yup.string().required(),
+  phoneNumber: Yup.string(),
+  website: Yup.string().url(),
+  yelp: Yup.string().url()
+});
+
+const PlaceCreateForm = withFormik({
+  mapPropsToValues({ name, phoneNumber, yelp, website }) {
+    return {
+      name: name || '',
+      phoneNumber: phoneNumber || '',
+      website: website || '',
+      yelp: website || ''
+    };
+  },
+  validationSchema: VALIDATION_SCHEMA,
+  handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
+    console.log('PLEASE WORKSKDSDSDFDS!!');
+
+    // Redirect to newly created place
+
+    setTimeout(() => {
+      resetForm();
+
+      setSubmitting(false);
+    }, 2000);
+  }
+})(PlaceCreateFormRenderer);
 
 class PlaceCreate extends Component {
   render() {
     return (
       <Container>
-        <h1>{'Create A New Place'}</h1>
+        <Row>
+          <Col lg="8">
+            <Title>{'Create A New Place'}</Title>
 
-        <Formik
-          initialValues={{
-            email: '',
-            password: ''
-          }}
-          validate={values => {
-            // same as above, but feel free to move this into a class method now.
-            let errors = {};
-            if (!values.email) {
-              errors.email = 'Required';
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-            ) {
-              errors.email = 'Invalid email address';
-            }
-            return errors;
-          }}
-          onSubmit={(
-            values,
-            { setSubmitting, setErrors /* setValues and other goodies */ }
-          ) => {
-            console.log('setSubmitting', setSubmitting);
-            console.log('setErrors', setErrors);
-          }}
-          render={({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting
-          }) => (
-            // <form onSubmit={handleSubmit}>
-            //   <input
-            //     type="email"
-            //     name="email"
-            //     onChange={handleChange}
-            //     onBlur={handleBlur}
-            //     value={values.email}
-            //   />
-            //   {touched.email && errors.email && <div>{errors.email}</div>}
-            //   <input
-            //     type="password"
-            //     name="password"
-            //     onChange={handleChange}
-            //     onBlur={handleBlur}
-            //     value={values.password}
-            //   />
-            //   {touched.password &&
-            //     errors.password && <div>{errors.password}</div>}
-            //   <button type="submit" disabled={isSubmitting}>
-            //     Submit
-            //   </button>
-            // </form>
-
-            <Form onSubmit={this.handleSignIn}>
-              <FormGroup>
-                <Label for="name">Place Name</Label>
-                <Input
-                  name="name"
-                  id="name"
-                  placeholder="Bob's Pizza"
-                  type="text"
-                />
-              </FormGroup>
-
-              <h4>Location</h4>
-
-              <FormGroup>
-                <Label for="address1">Address</Label>
-                <Input
-                  name="address1"
-                  id="address1"
-                  placeholder="123 Abc St"
-                  type="text"
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Input
-                  name="address2"
-                  id="address2"
-                  placeholder="Ste 123"
-                  type="text"
-                />
-              </FormGroup>
-
-              <FormGroup row>
-                <Col md="6">
-                  <Label for="city">City</Label>
-                  <Input
-                    name="city"
-                    id="city"
-                    placeholder="Los Angeles"
-                    type="text"
-                  />
-                </Col>
-
-                <Col md="3">
-                  <Label for="state">State</Label>
-                  <Input name="state" id="state" placeholder="CA" type="text" />
-                </Col>
-
-                <Col md="3">
-                  <Label for="zip">ZIP</Label>
-                  <Input name="zip" id="zip" placeholder="12345" type="text" />
-                </Col>
-              </FormGroup>
-
-              <h4>Details</h4>
-
-              <FormGroup>
-                <Label for="phone">Phone Number</Label>
-                <Input
-                  name="phone"
-                  id="phone"
-                  placeholder="(123) 123-1234"
-                  type="text"
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label for="website">Website</Label>
-                <Input
-                  name="website"
-                  id="website"
-                  placeholder="https://1234.com"
-                  type="text"
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label for="yelp">Yelp Link</Label>
-                <Input
-                  name="yelp"
-                  id="yelp"
-                  placeholder="https://yelp.com/biz/somelink"
-                  type="text"
-                />
-              </FormGroup>
-
-              <FormGroup>
-                <Label for="tags">Tags</Label>
-                <Input name="tags" id="tags" placeholder="12345" type="text" />
-              </FormGroup>
-
-              <Button color="primary">{'Create Place'}</Button>
-            </Form>
-          )}
-        />
+            <PlaceCreateForm />
+          </Col>
+        </Row>
       </Container>
     );
   }
