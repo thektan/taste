@@ -161,7 +161,8 @@ const PlaceCreateFormRenderer = ({
     </Row>
 
     <Row className="form-section">
-      <Col md={{ size: 9, offset: 3 }}>
+      <Col className="text-right" md={{ size: 9, offset: 3 }}>
+        <Button color="link">{'Cancel'}</Button>{' '}
         <Button color="primary" disabled={isSubmitting} type="submit">
           {'Create Place'}
         </Button>
@@ -171,19 +172,42 @@ const PlaceCreateFormRenderer = ({
 );
 
 const VALIDATION_SCHEMA = Yup.object().shape({
-  name: Yup.string().required(),
+  name: Yup.string().required('Required'),
+  address1: Yup.string().required('Required'),
+  address2: Yup.string(),
+  city: Yup.string().required('Required'),
+  state: Yup.string().required('Required'),
+  zip: Yup.string().required('Required'),
   phoneNumber: Yup.string(),
   website: Yup.string().url(),
-  yelp: Yup.string().url()
+  yelp: Yup.string().url(),
+  tags: Yup.string().required('At least 1 tag is required')
 });
 
 const PlaceCreateForm = withFormik({
-  mapPropsToValues({ name, phoneNumber, yelp, website }) {
+  mapPropsToValues({
+    name,
+    address1,
+    address2,
+    city,
+    state,
+    zip,
+    phoneNumber,
+    yelp,
+    website,
+    tags
+  }) {
     return {
-      name: name || '',
-      phoneNumber: phoneNumber || '',
-      website: website || '',
-      yelp: website || ''
+      name,
+      address1,
+      address2,
+      city,
+      state,
+      zip,
+      phoneNumber,
+      yelp,
+      website,
+      tags
     };
   },
   validationSchema: VALIDATION_SCHEMA,
