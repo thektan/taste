@@ -149,11 +149,11 @@ const PlaceCreateFormRenderer = ({
         </FormGroup>
 
         <FormGroup>
-          <Label for="tags">Tags</Label>
+          <Label for="categories">Tags</Label>
 
           <Field
             component={StyledField}
-            name="tags"
+            name="categories"
             placeholder="pizza, burgers, ..."
           />
         </FormGroup>
@@ -181,7 +181,7 @@ const VALIDATION_SCHEMA = Yup.object().shape({
   phoneNumber: Yup.string(),
   website: Yup.string().url(),
   yelp: Yup.string().url(),
-  tags: Yup.string().required('At least 1 tag is required')
+  categories: Yup.string().required('At least 1 category is required')
 });
 
 const PlaceCreateForm = withFormik({
@@ -195,7 +195,7 @@ const PlaceCreateForm = withFormik({
     phoneNumber,
     yelp,
     website,
-    tags
+    categories
   }) {
     return {
       name,
@@ -207,7 +207,7 @@ const PlaceCreateForm = withFormik({
       phoneNumber,
       yelp,
       website,
-      tags
+      categories
     };
   },
   validationSchema: VALIDATION_SCHEMA,
