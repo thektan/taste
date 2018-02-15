@@ -14,6 +14,8 @@ import { withFormik, Field } from 'formik';
 import Title from '../components/Title';
 import Yup from 'yup';
 
+import { createPlace } from '../utils/data';
+
 const StyledField = ({
   field: { name, value, onChange, onBlur },
   form: { touched, errors },
@@ -104,7 +106,7 @@ const PlaceCreateFormRenderer = ({
           </Col>
 
           <Col md="3">
-            <Label for="zip">ZIP</Label>
+            <Label for="zip">Zip Code</Label>
 
             <Field component={StyledField} name="zip" placeholder="12345" />
           </Col>
@@ -173,15 +175,15 @@ const PlaceCreateFormRenderer = ({
 
 const VALIDATION_SCHEMA = Yup.object().shape({
   name: Yup.string().required('Required'),
-  address1: Yup.string().required('Required'),
+  address1: Yup.string(),
   address2: Yup.string(),
-  city: Yup.string().required('Required'),
-  state: Yup.string().required('Required'),
-  zip: Yup.string().required('Required'),
+  city: Yup.string(),
+  state: Yup.string(),
+  zip: Yup.string(),
   phoneNumber: Yup.string(),
   website: Yup.string().url(),
   yelp: Yup.string().url(),
-  categories: Yup.string().required('At least 1 category is required')
+  categories: Yup.string()
 });
 
 const PlaceCreateForm = withFormik({
@@ -212,15 +214,13 @@ const PlaceCreateForm = withFormik({
   },
   validationSchema: VALIDATION_SCHEMA,
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
-    console.log('PLEASE WORKSKDSDSDFDS!!');
+    setSubmitting(false);
 
-    // Redirect to newly created place
+    createPlace(values).then(response => {
+      window.location = '/'; // @TODO Update this to link to the newly created place page.
+    });
 
-    setTimeout(() => {
-      resetForm();
-
-      setSubmitting(false);
-    }, 2000);
+    console.log('values being submitted', values);
   }
 })(PlaceCreateFormRenderer);
 
