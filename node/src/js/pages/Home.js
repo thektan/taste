@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
-
-import { createPlace } from '../utils/data';
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   render() {
     return (
       <Container>
         <h1>Home</h1>
+
+        <Link to="/place/create">Create a new place</Link>
       </Container>
     );
   }

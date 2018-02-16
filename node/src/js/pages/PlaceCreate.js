@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Button,
   Col,
@@ -164,7 +165,9 @@ const PlaceCreateFormRenderer = ({
 
     <Row className="form-section">
       <Col className="text-right" md={{ size: 9, offset: 3 }}>
-        <Button color="link">{'Cancel'}</Button>{' '}
+        <Button color="link">
+          <Link to="/">{'Cancel'}</Link>
+        </Button>{' '}
         <Button color="primary" disabled={isSubmitting} type="submit">
           {'Create Place'}
         </Button>
