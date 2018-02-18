@@ -5,6 +5,7 @@ import { Container } from 'reactstrap';
 import NavBar from './components/NavBar';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'react-select/dist/react-select.css';
 import '../css/App.css';
 
 import Home from './pages/Home';
@@ -31,7 +32,9 @@ class App extends Component {
             </Fragment>
           )}
 
-          <Route exact path="/place/create" component={PlaceCreate} />
+          {currentUser && (
+            <Route exact path="/place/create" component={PlaceCreate} />
+          )}
 
           <Route exact path="/user/:id" component={User} />
         </Container>

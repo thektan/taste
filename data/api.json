@@ -1,6 +1,17 @@
 [
   {
     "path": "/places/*",
-    "data": true
+    "description": "Creates a new place",
+    "method": "POST",
+    "data": true,
+    "auth": {
+      "validator": "$auth != null"
+    },
+    "parameters": {
+      "name": {
+        "type": "string",
+        "required": true
+      }
+    }
   }
 ]

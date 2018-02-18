@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { Creatable } from 'react-select';
 import {
   Button,
   Col,
@@ -39,6 +40,40 @@ const StyledField = ({
   );
 };
 
+/**
+ * Custom component to connect react-select with Formik.
+ * @source https://codesandbox.io/s/jRzE53pqR
+ */
+class CategorySelect extends Component {
+  handleChange = value => {
+    // This is going to call setFieldValue and manually update values.categories
+    this.props.onChange('categories', value);
+  };
+
+  handleBlur = () => {
+    // This is going to call setFieldTouched and manually update touched.categories
+    this.props.onBlur('categories', true);
+  };
+
+  render() {
+    const { value, error, touched } = this.props;
+
+    return (
+      <Fragment>
+        <Creatable
+          id="categories"
+          multi={true}
+          onChange={this.handleChange}
+          onBlur={this.handleBlur}
+          value={value}
+        />
+
+        {!!error && touched && <FormFeedback>{error}</FormFeedback>}
+      </Fragment>
+    );
+  }
+}
+
 const PlaceCreateFormRenderer = ({
   values,
   errors,
@@ -46,7 +81,9 @@ const PlaceCreateFormRenderer = ({
   handleSubmit,
   handleBlur,
   handleChange,
-  isSubmitting
+  isSubmitting,
+  setFieldValue,
+  setFieldTouched
 }) => (
   <Form onSubmit={handleSubmit}>
     <Row className="form-section">
@@ -61,6 +98,26 @@ const PlaceCreateFormRenderer = ({
             name="name"
             placeholder="Bob's Pizza"
           />
+        </FormGroup>
+      </Col>
+    </Row>
+
+    <Row className="form-section">
+      <Col md="3">
+        <h5>Categories</h5>
+      </Col>
+
+      <Col md="9">
+        <FormGroup>
+          <FormGroup>
+            <CategorySelect
+              value={values.categories}
+              onChange={setFieldValue}
+              onBlur={setFieldTouched}
+              error={errors.categories}
+              touched={touched.categories}
+            />
+          </FormGroup>
         </FormGroup>
       </Col>
     </Row>
@@ -150,16 +207,6 @@ const PlaceCreateFormRenderer = ({
             placeholder="https://yelp.com/biz/somelink"
           />
         </FormGroup>
-
-        <FormGroup>
-          <Label for="categories">Tags</Label>
-
-          <Field
-            component={StyledField}
-            name="categories"
-            placeholder="pizza, burgers, ..."
-          />
-        </FormGroup>
       </Col>
     </Row>
 
@@ -178,6 +225,14 @@ const PlaceCreateFormRenderer = ({
 
 const VALIDATION_SCHEMA = Yup.object().shape({
   name: Yup.string().required('Required'),
+  categories: Yup.array()
+    .min(1, 'Please enter at least 1 category')
+    .of(
+      Yup.object().shape({
+        label: Yup.string().required(),
+        value: Yup.string().required()
+      })
+    ),
   address1: Yup.string(),
   address2: Yup.string(),
   city: Yup.string(),
@@ -185,8 +240,7 @@ const VALIDATION_SCHEMA = Yup.object().shape({
   zip: Yup.string(),
   phoneNumber: Yup.string(),
   website: Yup.string().url(),
-  yelp: Yup.string().url(),
-  categories: Yup.string()
+  yelp: Yup.string().url()
 });
 
 const PlaceCreateForm = withFormik({
@@ -222,8 +276,6 @@ const PlaceCreateForm = withFormik({
     createPlace(values).then(response => {
       window.location = '/'; // @TODO Update this to link to the newly created place page.
     });
-
-    console.log('values being submitted', values);
   }
 })(PlaceCreateFormRenderer);
 
