@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import { signUp } from '../utils/auth';
+import { ROUTES } from '../utils/routes';
 
 class SignUp extends Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class SignUp extends Component {
   handleSignUp(event) {
     signUp(event)
       .then(() => {
-        this.props.history.push('/signin');
+        this.props.history.push(ROUTES.SIGNIN);
       })
       .catch(err => {
         alert(

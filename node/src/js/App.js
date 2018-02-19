@@ -15,6 +15,7 @@ import User from './pages/User';
 import PlaceCreate from './pages/PlaceCreate';
 import Place from './pages/Place';
 import { currentUser } from './utils/auth';
+import { ROUTES } from './utils/routes';
 
 class App extends Component {
   render() {
@@ -23,18 +24,18 @@ class App extends Component {
         <Container>
           <NavBar currentUser={currentUser} />
 
-          <Route exact path="/" component={Home} />
+          <Route exact path={ROUTES.HOME} component={Home} />
 
           {!currentUser && (
             <Fragment>
-              <Route exact path="/signin" component={SignIn} />
+              <Route exact path={ROUTES.SIGNIN} component={SignIn} />
 
-              <Route exact path="/signup" component={SignUp} />
+              <Route exact path={ROUTES.SIGNUP} component={SignUp} />
             </Fragment>
           )}
 
           {currentUser && (
-            <Route exact path="/create/place" component={PlaceCreate} />
+            <Route exact path={ROUTES.PLACE_CREATE} component={PlaceCreate} />
           )}
 
           <Route exact path="/place/:id" component={Place} />

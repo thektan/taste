@@ -13,6 +13,7 @@ import {
 } from 'reactstrap';
 
 import { signOut } from '../utils/auth';
+import { ROUTES } from '../utils/routes';
 
 class NavBar extends Component {
   constructor(props) {
@@ -24,7 +25,7 @@ class NavBar extends Component {
   handleSignOut() {
     signOut()
       .then(() => {
-        window.location = '/'; // Just refresh the whole page instead of using react-router.
+        window.location = ROUTES.HOME; // Just refresh the whole page instead of using react-router.
       })
       .catch(() =>
         alert('An error has occurred and we were unable to sign you out.')
