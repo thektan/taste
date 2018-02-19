@@ -8,7 +8,7 @@ class Home extends Component {
       <Container>
         <h1>Home</h1>
 
-        <Link to="/place/create">Create a new place</Link>
+        <Link to="/create/place">Create a new place</Link>
       </Container>
     );
   }

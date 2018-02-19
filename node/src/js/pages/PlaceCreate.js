@@ -273,8 +273,8 @@ const PlaceCreateForm = withFormik({
   handleSubmit(values, { resetForm, setErrors, setSubmitting }) {
     setSubmitting(false);
 
-    createPlace(values).then(response => {
-      window.location = '/'; // @TODO Update this to link to the newly created place page.
+    createPlace(values).then(({ id }) => {
+      window.location = `/place/${id}`;
     });
   }
 })(PlaceCreateFormRenderer);

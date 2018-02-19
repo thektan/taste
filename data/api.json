@@ -1,7 +1,7 @@
 [
   {
-    "path": "/places/*",
     "description": "Creates a new place",
+    "path": "/places/*",
     "method": "POST",
     "data": true,
     "auth": {
@@ -13,5 +13,11 @@
         "required": true
       }
     }
+  },
+  {
+    "description": "Gets information about a place",
+    "path": "/places/:id",
+    "method": "GET",
+    "data": true
   }
 ]

@@ -13,6 +13,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import User from './pages/User';
 import PlaceCreate from './pages/PlaceCreate';
+import Place from './pages/Place';
 import { currentUser } from './utils/auth';
 
 class App extends Component {
@@ -33,8 +34,10 @@ class App extends Component {
           )}
 
           {currentUser && (
-            <Route exact path="/place/create" component={PlaceCreate} />
+            <Route exact path="/create/place" component={PlaceCreate} />
           )}
+
+          <Route exact path="/place/:id" component={Place} />
 
           <Route exact path="/user/:id" component={User} />
         </Container>

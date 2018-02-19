@@ -47,3 +47,10 @@ export function createPlace({
     categories: categoriesValuesArray
   });
 }
+
+/**
+ * Gets a place.
+ */
+export function getPlace(id) {
+  return DATA.get(`places/${id}`);
+}
