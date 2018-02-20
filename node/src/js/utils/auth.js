@@ -46,3 +46,15 @@ export function signUp(event) {
     password: form.password.value
   });
 }
+
+/**
+ * Google sign in.
+ * https://wedeploy.com/docs/auth/sign-in-with-google/
+ */
+export function signInWithGoogle() {
+  const googleProvider = new AUTH.provider.Google();
+
+  googleProvider.setProviderScope('email');
+
+  AUTH.signInWithRedirect(googleProvider);
+}

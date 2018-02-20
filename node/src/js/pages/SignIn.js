@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
 
-import { signIn } from '../utils/auth';
+import { AUTH, signIn, signInWithGoogle } from '../utils/auth';
 import { ROUTES } from '../utils/routes';
 
 class SignIn extends Component {
@@ -10,6 +10,12 @@ class SignIn extends Component {
     super(props);
 
     this.handleSignIn = this.handleSignIn.bind(this);
+  }
+
+  componentDidMount() {
+    AUTH.onSignIn(function(user) {
+      window.location = ROUTES.HOME;
+    });
   }
 
   handleSignIn(event) {
@@ -55,6 +61,12 @@ class SignIn extends Component {
               Sign In
             </Button>
           </Form>
+
+          <div className="mb-2 mt-2 text-center">{'or'}</div>
+
+          <Button block onClick={signInWithGoogle}>
+            {'Sign in with Google'}
+          </Button>
 
           <small className="signin-signup text-muted">
             {"Don't have an account? "}
