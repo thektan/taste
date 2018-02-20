@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Container, Form, FormGroup, Label, Input } from 'reactstrap';
 
 import { signIn } from '../utils/auth';
+import { ROUTES } from '../utils/routes';
 
 class SignIn extends Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class SignIn extends Component {
           <small className="signin-signup text-muted">
             {"Don't have an account? "}
 
-            <Link to="/signup">Create one here</Link>
+            <Link to={ROUTES.SIGNUP}>Create one here</Link>
           </small>
         </div>
       </Container>
