@@ -13,7 +13,8 @@ class User extends Component {
   }
 
   componentDidMount() {
-    AUTH.getUser(this.props.match.params.id)
+    AUTH.auth(process.env.REACT_APP_WEDEPLOY_MASTER_TOKEN)
+      .getUser(this.props.match.params.id)
       .then(({ name }) => {
         this.setState({ name });
       })
